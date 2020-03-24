@@ -9,6 +9,13 @@ export class Counter extends React.Component{
     };
     this.handleIncrement = this.handleIncrement.bind(this)
     this.handleDecrement = this.handleDecrement.bind(this)
+    console.log("Counter App Constructor");
+  }
+
+  //mount lifecycle hook
+  componentDidMount(){
+    //Ajax call and setState with new data
+    console.log("App mounted");
   }
 
   formatCounter(){
@@ -35,9 +42,21 @@ export class Counter extends React.Component{
     return classes;
   }
 
+  // after updation
+  componentDidUpdate(prevState){
+    console.log("component Updated ");
+    console.log("current state : ", this.state.count);
+    console.log("prev state : ", prevState);
+    // aim : if states changes then give a ajax call to get new data from server
+  }
 
+  componentWillUnmount(){
+    console.log("Counter deleted...");
+    // place for cleanup....timers or prevent memory leak
+  }
 
   render(){
+    console.log("rendered");
     return (
       <div>
       <button className="btn btn-primary m-2" onClick={this.handleIncrement}>Increment</button>
